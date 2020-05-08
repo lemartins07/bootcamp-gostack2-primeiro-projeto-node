@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import CreateUserService from '../services/CreateUsersService';
+import CreateUserService from '../services/CreateUserService';
 
 const usersRouter = Router();
 
@@ -15,6 +15,8 @@ usersRouter.post('/', async (request, response) => {
       email,
       password,
     });
+
+    delete user.password;
 
     return response.json(user);
   } catch (err) {
